@@ -231,7 +231,7 @@
       @media (max-width:600px){ .cat-grid{ grid-template-columns:1fr; } }
 
       /* ---------- Guides ---------- */
-      .guides-band{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+      .guides-band{ background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line); scroll-margin-top:70px; }
       @media (prefers-color-scheme: dark){ .guides-band{ background:#0d1230; } }
       .guide-tools{ display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:26px; }
       .chip{
@@ -1455,7 +1455,11 @@
           document.getElementById("heroSearchInput").value = q;
         }
         applyFilters();
-        document.getElementById("guides").scrollIntoView({ behavior: "smooth" });
+        var guidesEl = document.getElementById("guides");
+        if (guidesEl) {
+          var y = guidesEl.getBoundingClientRect().top + window.pageYOffset - 70;
+          window.scrollTo(0, y);
+        }
       }
 
       /* ---------------- Article reader ---------------- */
