@@ -1461,6 +1461,7 @@
             try { guidesEl.scrollIntoView({ behavior: "auto", block: "start" }); }
             catch (e) { window.scrollTo(0, guidesEl.offsetTop - 70); }
           };
+          if (window.location.hash !== "#guides") { window.location.hash = "guides"; }
           scrollNow();
           setTimeout(scrollNow, 300);
         }
