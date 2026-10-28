@@ -1457,8 +1457,12 @@
         applyFilters();
         var guidesEl = document.getElementById("guides");
         if (guidesEl) {
-          var y = guidesEl.getBoundingClientRect().top + window.pageYOffset - 70;
-          window.scrollTo(0, y);
+          var scrollNow = function(){
+            var y = guidesEl.getBoundingClientRect().top + window.pageYOffset - 70;
+            window.scrollTo({ top: y, left: 0, behavior: "instant" });
+          };
+          scrollNow();
+          setTimeout(scrollNow, 250);
         }
       }
 
