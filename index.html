@@ -1458,11 +1458,11 @@
         var guidesEl = document.getElementById("guides");
         if (guidesEl) {
           var scrollNow = function(){
-            var y = guidesEl.getBoundingClientRect().top + window.pageYOffset - 70;
-            window.scrollTo({ top: y, left: 0, behavior: "instant" });
+            try { guidesEl.scrollIntoView({ behavior: "auto", block: "start" }); }
+            catch (e) { window.scrollTo(0, guidesEl.offsetTop - 70); }
           };
           scrollNow();
-          setTimeout(scrollNow, 250);
+          setTimeout(scrollNow, 300);
         }
       }
 
