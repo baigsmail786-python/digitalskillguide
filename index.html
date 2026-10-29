@@ -215,6 +215,7 @@
       /* ---------- Categories ---------- */
       .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
       .cat-card{
+        text-decoration:none; display:block;
         background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
         overflow:hidden; text-align:left; cursor:pointer; padding:0; font:inherit; color:inherit;
         transition:transform .18s ease, box-shadow .18s ease;
@@ -1525,13 +1526,13 @@
       function renderCategories(){
         var html = "";
         CATEGORIES.forEach(function(c){
-          html += '<button type="button" class="cat-card" data-cat="' + c.id + '">' +
+          html += '<a class="cat-card" href="#guides" data-cat="' + c.id + '">' +
             '<img src="' + c.img + '" alt="' + c.alt + '" loading="lazy" />' +
             '<span class="cat-body" style="display:block;">' +
               '<h3><span class="cic">' + ICONS[c.icon] + '</span>' + c.name + '</h3>' +
               '<p>' + c.desc + '</p>' +
               '<span class="cat-link">View guides ' + ICONS.arrow + '</span>' +
-            '</span></button>';
+            '</span></a>';
         });
         document.getElementById("catGrid").innerHTML = html;
         var foot = "";
