@@ -1667,7 +1667,12 @@
           document.getElementById("heroSearchInput").value = q;
         }
         applyFilters();
-        document.getElementById("guides").scrollIntoView({ behavior: "smooth" });
+        var guidesEl = document.getElementById("guides");
+        if (guidesEl) {
+          guidesEl.scrollIntoView({ behavior: "auto", block: "start" });
+          window.scrollTo(0, guidesEl.getBoundingClientRect().top + window.pageYOffset - 80);
+        }
+        try { history.replaceState(null, "", "#guides"); } catch (e) {}
       }
 
       /* ---------------- Article reader ---------------- */
