@@ -1,7 +1,14 @@
 <!doctype html>
 <html lang="en">
   <head>
-<meta name="google-site-verification" content="OZdKEpw4GRfM3pT7YY1kUvOlwK3rxWRFYn-u9DE8NHg" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB2F0QNCRS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XB2F0QNCRS');
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
@@ -215,7 +222,6 @@
       /* ---------- Categories ---------- */
       .cat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
       .cat-card{
-        text-decoration:none; display:block;
         background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
         overflow:hidden; text-align:left; cursor:pointer; padding:0; font:inherit; color:inherit;
         transition:transform .18s ease, box-shadow .18s ease;
@@ -475,7 +481,6 @@
     </style>
   </head>
   <body>
-<div style="background:#0f766e;color:#fff;text-align:center;padding:12px;font-family:system-ui"><a href="daily-2026-10-30.html" style="color:#fff;font-weight:700">New today (30 Oct 2026): Read today's 6 new guides</a></div>
 
     <!-- ================= Header ================= -->
     <header class="site-header">
@@ -1527,13 +1532,13 @@
       function renderCategories(){
         var html = "";
         CATEGORIES.forEach(function(c){
-          html += '<a class="cat-card" href="#guides" data-cat="' + c.id + '">' +
+          html += '<button type="button" class="cat-card" data-cat="' + c.id + '">' +
             '<img src="' + c.img + '" alt="' + c.alt + '" loading="lazy" />' +
             '<span class="cat-body" style="display:block;">' +
               '<h3><span class="cic">' + ICONS[c.icon] + '</span>' + c.name + '</h3>' +
               '<p>' + c.desc + '</p>' +
               '<span class="cat-link">View guides ' + ICONS.arrow + '</span>' +
-            '</span></a>';
+            '</span></button>';
         });
         document.getElementById("catGrid").innerHTML = html;
         var foot = "";
@@ -1669,12 +1674,7 @@
           document.getElementById("heroSearchInput").value = q;
         }
         applyFilters();
-        var guidesEl = document.getElementById("guides");
-        if (guidesEl) {
-          guidesEl.scrollIntoView({ behavior: "auto", block: "start" });
-          window.scrollTo(0, guidesEl.getBoundingClientRect().top + window.pageYOffset - 80);
-        }
-        try { history.replaceState(null, "", "#guides"); } catch (e) {}
+        document.getElementById("guides").scrollIntoView({ behavior: "smooth" });
       }
 
       /* ---------------- Article reader ---------------- */
