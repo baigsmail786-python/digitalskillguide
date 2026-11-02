@@ -1,0 +1,30 @@
+name: Temp publish site
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'digitalskillguide.html'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move temporary upload to index.html
+        run: |
+          if [ -f digitalskillguide.html ]; then
+            mv digitalskillguide.html index.html
+          else
+            echo "Temporary file digitalskillguide.html not found"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Publish updated homepage from temporary upload"
+          git push
