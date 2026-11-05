@@ -285,7 +285,7 @@
       .meta-row{ display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; font-size:.88rem; font-weight:700; }
       .meta-row span{ display:inline-flex; align-items:center; gap:6px; }
       .read-btn{
-        margin-top:22px; border:0; cursor:pointer; font:inherit; font-weight:800;
+        margin-top:22px; border:0; cursor:pointer; font:inherit; font-weight:800; text-decoration:none;
         background:var(--amber); color:#231a00; padding:12px 22px; border-radius:12px;
         display:inline-flex; align-items:center; gap:8px;
       }
@@ -1788,7 +1788,7 @@
             '<h3>' + f.title + '</h3>' +
             '<p>' + f.excerpt + '</p>' +
             '<div class="meta-row"><span>' + ICONS.clock + f.mins + ' min read</span><span>' + ICONS.level + f.level + '</span><span>Updated ' + f.date + '</span></div>' +
-            '<button type="button" class="read-btn" data-read="' + f.id + '">Read the guide ' + ICONS.arrow + '</button>' +
+            '<a class="read-btn" href="./' + f.id + '.html">Read the guide ' + ICONS.arrow + '</a>' +
           '</div>';
       }
 
@@ -1804,7 +1804,7 @@
               '<h3>' + p.title + '</h3>' +
               '<p>' + p.excerpt + '</p>' + kw +
               metaHTML(p) +
-              '<button type="button" class="read-btn ghost" data-read="' + p.id + '">' + (p.seoBlog ? 'Read SEO blog ' : 'Read guide ') + ICONS.arrow + '</button>' +
+              '<a class="read-btn ghost" href="./' + p.id + '.html">' + (p.seoBlog ? 'Read SEO blog ' : 'Read guide ') + ICONS.arrow + '</a>' +
             '</div></article>';
         });
         document.getElementById("postGrid").innerHTML = html;
@@ -1823,7 +1823,7 @@
               '<p>' + p.excerpt + '</p>' +
               '<div class="keyword-line">Target keyword: ' + p.primaryKeyword + '</div>' +
               metaHTML(p) +
-              '<button type="button" class="read-btn ghost" data-read="' + p.id + '">Read SEO blog ' + ICONS.arrow + '</button>' +
+              '<a class="read-btn ghost" href="./' + p.id + '.html">Read SEO blog ' + ICONS.arrow + '</a>' +
             '</div></article>';
         });
         el.innerHTML = html;
